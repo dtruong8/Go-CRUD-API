@@ -3,7 +3,10 @@ package main
 import (
 	"customers/db"
 	"fmt"
+	"net/http"
 )
+
+const webPort = "80"
 
 const (
 	host     = "localhost"
@@ -19,18 +22,11 @@ func main() {
 	if err != nil {
 		fmt.Printf(err.Error())
 	}
-	/*db, err := sql.Open("postgres", psqlconn)
+
+	http.HandleFunc("/", store.CustomerStore.Customers())
+	err := http.ListenAndServe(":80", nil)
 	if err != nil {
-		log.Panic(err)
+		fmt.Printf(err.Error())
 	}
-	defer db.Close()
 
-	err = db.Ping()
-
-	if err != nil {
-		log.Panic(err)
-	}
-	fmt.Println("Connected to Postgres Database!")
-
-	*/
 }
