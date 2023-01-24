@@ -1,2 +1,2 @@
-# Go-Gin-API
-A Go API using Gin
+# Simple Go API
+A Go API
